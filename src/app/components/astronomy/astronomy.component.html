@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="header">
+        <div class="heading"><span>Spacestagram</span></div>
+        <div class="sub_heading"><span>Brought to you by NASA's Astronomy Photo of the day(APOD) API</span></div>
+    </div>
+    <div class="content">
+        <!-- <div *ngIf="getAppData()"> -->
+            <div class="img_container" *ngFor="let data of getAppData();">
+                <div class="image">
+                    <img [src]="data.url" />
+                </div>
+                <div class="img_info">
+                    <p>{{data.explanation}}</p>
+                    <p>{{data.date}}</p>
+                    <button type="button" class="btn btn-default" (click)="likeDislike(data.date)">Like</button>
+                </div>
+                
+            </div>
+        <!-- </div> -->
+    </div>
+</div>

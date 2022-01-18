@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="header">
+        <div class="heading"><span>Spacestagram</span></div>
+        <div class="sub_heading"><span>Brought to you by NASA's Images API</span></div>
+    </div>
+    <div class="content">
+        <!-- <div *ngIf="getAppData()"> -->
+            <div class="img_container" *ngFor="let item of getAppData();">
+                <div class="image">
+                    <img [src]="item.links[0].href" />
+                </div>
+                <div class="img_info">
+                    <p>{{item.data[0].description}}</p>
+                    <button type="button" class="btn btn-default" (click)="likeDislike(item.data[0].nasa_id)">Like</button>
+                </div>
+                
+            </div>
+        <!-- </div> -->
+    </div>
+</div>

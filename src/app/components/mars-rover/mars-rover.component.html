@@ -1,1 +1,21 @@
-<p>mars-rover works!</p>
+<div class="container">
+    <div class="header">
+        <div class="heading"><span>Spacestagram</span></div>
+        <div class="sub_heading"><span>Brought to you by NASA's image API</span></div>
+    </div>
+    <div class="content">
+        <!-- <div *ngIf="getAppData()"> -->
+            <div class="img_container" *ngFor="let data of getAppData();">
+                <div class="image">
+                    <img [src]="data.img_src" />
+                </div>
+                <div class="img_info" *ngIf="data && data.camera">
+                    <p>Curiousity Rover {{data.camera.full_name}}</p>
+                    <p *ngIf="data && data.earth_date">{{data.earth_date}}</p>
+                    <button type="button" class="btn btn-default" (click)="likeDislike(data.id)">Like</button>
+                </div>
+                
+            </div>
+        <!-- </div> -->
+    </div>
+</div>
