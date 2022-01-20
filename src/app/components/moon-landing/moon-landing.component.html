@@ -11,7 +11,7 @@
                 </div>
                 <div class="img_info">
                     <p>{{item.data[0].description}}</p>
-                    <button type="button" class="btn btn-default" (click)="likeDislike(item.data[0].nasa_id)">Like</button>
+                    <button type="button" class="btn btn-default" [ngClass]="{'liked': imageLiked(item.data[0].nasa_id)}" (click)="likeDislike(item.data[0].nasa_id)">Like</button>
                 </div>
                 
             </div>

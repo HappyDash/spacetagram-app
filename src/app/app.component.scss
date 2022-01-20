@@ -24,6 +24,11 @@
     flex: 0.5;
   }
 
+  .toolbar nav ul li a.nav_active{
+    background-color: white;
+    color: black;
+  }
+
   .toolbar {
     position: absolute;
     top: 0;
@@ -36,6 +41,10 @@
     background-color: #13161a;
     color: white;
     font-weight: 600;
+  }
+
+  .toolbar .title {
+    font-size: 18px;
   }
 
   .toolbar img {

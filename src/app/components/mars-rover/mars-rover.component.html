@@ -10,9 +10,9 @@
                     <img [src]="data.img_src" />
                 </div>
                 <div class="img_info" *ngIf="data && data.camera">
-                    <p>Curiousity Rover {{data.camera.full_name}}</p>
+                    <p><b>Curiousity Rover {{data.camera.full_name}}</b></p>
                     <p *ngIf="data && data.earth_date">{{data.earth_date}}</p>
-                    <button type="button" class="btn btn-default" (click)="likeDislike(data.id)">Like</button>
+                    <button type="button" class="btn btn-default" [ngClass]="{'liked': imageLiked(data.id)}" (click)="likeDislike(data.id)">Like</button>
                 </div>
                 
             </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LikesObject } from 'src/app/models/mars-rover.interface';
 
 @Component({
   selector: 'app-astronomy',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AstronomyComponent implements OnInit {
   private astro_data: Array<any> = [];
+  private likesArray: LikesObject = {};
+
   constructor() { }
 
   ngOnInit(){
@@ -14,8 +17,7 @@ export class AstronomyComponent implements OnInit {
     .then(response => response.json())
     .then((data: any) => {
       this.astro_data = data;
-      console.log(data);
-      //this.setLikeDislikes();
+      this.setLikeDislikes();
     });
   }
 
@@ -24,11 +26,24 @@ export class AstronomyComponent implements OnInit {
   }
 
   setLikeDislikes(){
-
+    this.astro_data.forEach((img: any) => {
+      if(localStorage.getItem(img.date.toString()))
+        this.likesArray[img.date.toString()] = true;
+    });
   }
 
   likeDislike(date: string) {
-    console.log(date)
+    this.likesArray[date.toString()] = !this.likesArray[date.toString()];
+    if(!this.likesArray[date.toString()]){
+      localStorage.removeItem(date.toString());
+    }
+    else {
+      localStorage.setItem(date.toString(), 'yes');
+    }
+  }
+
+  imageLiked(date: number): boolean{
+    return this.likesArray[date.toString()];
   }
 
 }

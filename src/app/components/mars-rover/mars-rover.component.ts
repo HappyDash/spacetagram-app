@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MarsRoverData, MarsRoverPhotosData } from '../../models/mars-rover.interface';
+import { LikesObject, MarsRoverData, MarsRoverPhotosData } from '../../models/mars-rover.interface';
 
 @Component({
   selector: 'app-mars-rover',
@@ -10,8 +10,10 @@ export class MarsRoverComponent implements OnInit {
 
   private app_data: Array<MarsRoverPhotosData> = [];
 
-  constructor(){
+  private likesArray: LikesObject = {};
 
+  constructor(){
+    localStorage.setItem('mars_likes', JSON.stringify([]));
   }
 
   ngOnInit(){
@@ -19,16 +21,9 @@ export class MarsRoverComponent implements OnInit {
     .then(response => response.json())
     .then((data: MarsRoverData) => {
       this.app_data = data['photos'];
+      console.log(this.app_data)
       this.setLikeDislikes();
     });
-    fetch("https://images-api.nasa.gov/search?q=apollo%2011&description=moon%20landing&media_type=image&photographer=NASA/Connie Moore")
-    .then(response => response.json())
-    .then((data: MarsRoverData) => {
-      // this.app_data = data['photos'];
-      // this.setLikeDislikes();
-      console.log(data);
-    });
-    //NASA/Connie Moore
   }
 
   getAppData() {
@@ -36,11 +31,25 @@ export class MarsRoverComponent implements OnInit {
   }
 
   setLikeDislikes(){
-
+    this.app_data.forEach((img: MarsRoverPhotosData) => {
+      if(localStorage.getItem(img.id.toString()))
+        this.likesArray[img.id.toString()] = true;
+    })
+    //if(localStorage.getItem())
   }
 
   likeDislike(id: number) {
-    console.log(id)
+    this.likesArray[id.toString()] = !this.likesArray[id.toString()];
+    if(!this.likesArray[id.toString()]){
+      localStorage.removeItem(id.toString());
+    }
+    else {
+      localStorage.setItem(id.toString(), 'yes');
+    }
+  }
+
+  imageLiked(id: number): boolean{
+    return this.likesArray[id.toString()];
   }
 
 }

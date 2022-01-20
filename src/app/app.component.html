@@ -19,9 +19,9 @@
   <div class="spacer"></div>
   <nav>
     <ul>
-      <li><a routerLink="/rover" routerLinkActive="active">Mars Rover</a></li>
-      <li><a routerLink="/astronomy" routerLinkActive="active">Astronomy</a></li>
-      <li><a routerLink="/moon" routerLinkActive="active">Moon Landing</a></li>
+      <li><a routerLink="/rover" routerLinkActive="active" (click)="setCurrentNav('mars')" [ngClass]="{'nav_active': currentNav=='mars'}">Mars Rover</a></li>
+      <li><a routerLink="/astronomy" routerLinkActive="active" (click)="setCurrentNav('astro')" [ngClass]="{'nav_active': currentNav=='astro'}">Astronomy</a></li>
+      <li><a routerLink="/moon" routerLinkActive="active" (click)="setCurrentNav('moon')" [ngClass]="{'nav_active': currentNav=='moon'}">Moon Landing</a></li>
     </ul>
   </nav>
     

@@ -10,9 +10,10 @@
                     <img [src]="data.url" />
                 </div>
                 <div class="img_info">
+                    <p class="img_title"><b>{{data.title}}</b></p>
                     <p>{{data.explanation}}</p>
                     <p>{{data.date}}</p>
-                    <button type="button" class="btn btn-default" (click)="likeDislike(data.date)">Like</button>
+                    <button type="button" class="btn btn-default" [ngClass]="{'liked': imageLiked(data.date)}" (click)="likeDislike(data.date)">Like</button>
                 </div>
                 
             </div>

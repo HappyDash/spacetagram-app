@@ -25,3 +25,7 @@ export interface MarsRoverPhotosData {
 export interface MarsRoverData {
     photos: Array<MarsRoverPhotosData>;
 }
+
+export interface LikesObject {
+    [key: string]: boolean;
+}

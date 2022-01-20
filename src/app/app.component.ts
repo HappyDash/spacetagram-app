@@ -7,5 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   public title = 'Spacetagram';
-  
+  public currentNav = 'mars';
+
+  setCurrentNav(nav: string) {
+    this.currentNav = nav;
+  }
 }
