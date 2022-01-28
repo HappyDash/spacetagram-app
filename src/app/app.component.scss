@@ -101,6 +101,13 @@
     // align-items: center;
   }
 
+  .home_container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   svg.material-icons {
     height: 24px;
     width: auto;

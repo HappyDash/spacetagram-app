@@ -5,6 +5,7 @@ import { MarsRoverComponent } from './components/mars-rover/mars-rover.component
 import { MoonLandingComponent } from './components/moon-landing/moon-landing.component';
 
 const routes: Routes = [
+  { path: '', component: MarsRoverComponent },
   { path: 'rover', component: MarsRoverComponent },
   { path: 'astronomy', component: AstronomyComponent },
   { path: 'moon', component: MoonLandingComponent }
